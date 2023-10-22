@@ -23,8 +23,12 @@ namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-
-
+        /// <summary>
+        /// chapter 95
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
         {
             var orderEntity = _mapper.Map<Order>(request);
