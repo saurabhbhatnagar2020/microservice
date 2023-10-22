@@ -12,7 +12,7 @@ namespace Discount.API.Repositories
         {
             _configuration = configuration;
         }
-       
+
         public async Task<Coupon> GetDiscount(string productName)
         {
             using var connection = new NpgsqlConnection

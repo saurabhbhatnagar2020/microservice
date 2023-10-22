@@ -2,7 +2,6 @@
 using Catalog.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using ZstdSharp.Unsafe;
 
 namespace Catalog.API.Controller
 {
@@ -19,7 +18,7 @@ namespace Catalog.API.Controller
             _logger = logger;
         }
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Product>),(int) HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             return Ok(await _repository.GetProducts());
@@ -27,11 +26,11 @@ namespace Catalog.API.Controller
 
         [HttpGet("{id:length(24)}", Name = "GetProduct")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(Product),(int) HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> GetProductById(string id)
         {
             var product = await _repository.GetProduct(id);
-            if(product == null)
+            if (product == null)
             {
                 return NotFound();
             }
